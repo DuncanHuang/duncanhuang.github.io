@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:4000/MySQL/mysql_master_slave_replication/</loc>
+    <loc>http://localhost:4000/Git/SourceTree%20-%20Custom%20Actioins/</loc>
     
-    <lastmod>2016-08-06T06:35:37.000Z</lastmod>
+    <lastmod>2016-08-19T02:47:12.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://localhost:4000/CentOS/observium_installation_in_centos_6/</loc>
     
-    <lastmod>2016-08-06T06:10:21.000Z</lastmod>
+    <lastmod>2016-08-07T17:41:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/MySQL/mysql_master_slave_replication/</loc>
+    
+    <lastmod>2016-08-06T06:35:37.000Z</lastmod>
     
   </url>
   
