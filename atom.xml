@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://localhost:4000/"/>
+  <link href="http://blog.dtask.idv.tw/"/>
   <updated>2016-08-19T02:57:40.000Z</updated>
-  <id>http://localhost:4000/</id>
+  <id>http://blog.dtask.idv.tw/</id>
   
   <author>
     <name>Duncan Huang</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>SourceTree - Custom Actioins</title>
-    <link href="http://localhost:4000/Git/SourceTree-CustomActioins/"/>
-    <id>http://localhost:4000/Git/SourceTree-CustomActioins/</id>
+    <link href="http://blog.dtask.idv.tw/Git/SourceTree-CustomActioins/"/>
+    <id>http://blog.dtask.idv.tw/Git/SourceTree-CustomActioins/</id>
     <published>2016-08-18T16:00:00.000Z</published>
     <updated>2016-08-19T02:57:40.000Z</updated>
     
@@ -100,16 +100,16 @@
     </summary>
     
     
-      <category term="Git" scheme="http://localhost:4000/tags/Git/"/>
+      <category term="Git" scheme="http://blog.dtask.idv.tw/tags/Git/"/>
     
-      <category term="SourceTree" scheme="http://localhost:4000/tags/SourceTree/"/>
+      <category term="SourceTree" scheme="http://blog.dtask.idv.tw/tags/SourceTree/"/>
     
   </entry>
   
   <entry>
     <title>在 CentOS 6 安裝、設定 Observium</title>
-    <link href="http://localhost:4000/CentOS/observium_installation_in_centos_6/"/>
-    <id>http://localhost:4000/CentOS/observium_installation_in_centos_6/</id>
+    <link href="http://blog.dtask.idv.tw/CentOS/observium_installation_in_centos_6/"/>
+    <id>http://blog.dtask.idv.tw/CentOS/observium_installation_in_centos_6/</id>
     <published>2016-05-30T16:00:00.000Z</published>
     <updated>2016-08-07T17:41:06.000Z</updated>
     
@@ -170,16 +170,16 @@
     </summary>
     
     
-      <category term="Observium" scheme="http://localhost:4000/tags/Observium/"/>
+      <category term="Observium" scheme="http://blog.dtask.idv.tw/tags/Observium/"/>
     
-      <category term="CentOS" scheme="http://localhost:4000/tags/CentOS/"/>
+      <category term="CentOS" scheme="http://blog.dtask.idv.tw/tags/CentOS/"/>
     
   </entry>
   
   <entry>
     <title>MySQL(Maria) Master Slave Replication</title>
-    <link href="http://localhost:4000/MySQL/mysql_master_slave_replication/"/>
-    <id>http://localhost:4000/MySQL/mysql_master_slave_replication/</id>
+    <link href="http://blog.dtask.idv.tw/MySQL/mysql_master_slave_replication/"/>
+    <id>http://blog.dtask.idv.tw/MySQL/mysql_master_slave_replication/</id>
     <published>2015-01-01T16:00:00.000Z</published>
     <updated>2016-08-06T06:35:37.000Z</updated>
     
@@ -212,9 +212,9 @@
     </summary>
     
     
-      <category term="MySQL" scheme="http://localhost:4000/tags/MySQL/"/>
+      <category term="MySQL" scheme="http://blog.dtask.idv.tw/tags/MySQL/"/>
     
-      <category term="Maria" scheme="http://localhost:4000/tags/Maria/"/>
+      <category term="Maria" scheme="http://blog.dtask.idv.tw/tags/Maria/"/>
     
   </entry>
   
