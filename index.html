@@ -321,71 +321,18 @@
 
       
         
-          
-            <h1 id="下載檔案"><a href="#下載檔案" class="headerlink" title="下載檔案"></a>下載檔案</h1><p><img src="14733272698815.jpg" alt=""></p>
+          <h1 id="下載檔案"><a href="#下載檔案" class="headerlink" title="下載檔案"></a>下載檔案</h1><p><img src="14733272698815.jpg" alt=""></p>
 <h2 id="Oracle-Instant-Client"><a href="#Oracle-Instant-Client" class="headerlink" title="Oracle Instant Client"></a>Oracle Instant Client</h2><ul>
-<li>32bit → <a href="http://www.oracle.com/technetwork/topics/linuxsoft-082809.html" target="_blank" rel="external">http://www.oracle.com/technetwork/topics/linuxsoft-082809.html</a></li>
-<li>64bit → <a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html" target="_blank" rel="external">http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html</a></li>
+<li>32bit → <a href="http://www.oracle.com/technetwork/topics/linuxsoft-082809.html">http://www.oracle.com/technetwork/topics/linuxsoft-082809.html</a></li>
+<li>64bit → <a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html">http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html</a></li>
 </ul>
-<h2 id="oci8"><a href="#oci8" class="headerlink" title="oci8"></a>oci8</h2><p><a href="http://pecl.php.net/package/oci8" target="_blank" rel="external">http://pecl.php.net/package/oci8</a></p>
-<h2 id="PDO-OCI"><a href="#PDO-OCI" class="headerlink" title="PDO_OCI"></a>PDO_OCI</h2><p><a href="https://pecl.php.net/package/pdo_oci" target="_blank" rel="external">https://pecl.php.net/package/pdo_oci</a></p>
-<h1 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h1><h2 id="先安裝編譯套件"><a href="#先安裝編譯套件" class="headerlink" title="先安裝編譯套件"></a>先安裝編譯套件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum --enablerepo=remi-php56 install php-devel</div></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install php-devel</div></pre></td></tr></table></figure>
-<h2 id="Oracle-Instant-Client-1"><a href="#Oracle-Instant-Client-1" class="headerlink" title="Oracle Instant Client"></a>Oracle Instant Client</h2><h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm -ivh oracle-instantclient11.2-basic-11.2.0.4.0-1.i386.rpm</div><div class="line">rpm -ivh oracle-instantclient11.2-devel-11.2.0.4.0-1.i386.rpm</div></pre></td></tr></table></figure>
-<p>確認</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep oracle</div></pre></td></tr></table></figure>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/ld.so.conf</div></pre></td></tr></table></figure>
-<p>最後一行加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/lib/oracle/11.2/client/lib/</div></pre></td></tr></table></figure>
-<p>如為 64bit 版本的則改為 client64，以下全都是</p>
-<h4 id="設定-link"><a href="#設定-link" class="headerlink" title="設定 link"></a>設定 link</h4><p>64bit 版本需再設定 link</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/lib/oracle/11.2/client64 /usr/lib/oracle/11.2/client</div><div class="line">ln -s /usr/include/oracle/11.2/client64 /usr/include/oracle/11.2/client</div></pre></td></tr></table></figure>
-<h3 id="環境變數"><a href="#環境變數" class="headerlink" title="環境變數"></a>環境變數</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div></pre></td></tr></table></figure>
-<p>最後加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ORACLE_HOME=/usr/lib/oracle/11.2/client/</div><div class="line">export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client:$LD_LIBRARY_PATH</div><div class="line">export NLS_LANG=&quot;AMERICAN_AMERICA.AL32UTF8&quot;</div></pre></td></tr></table></figure>
-<p>讀取設定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
-<h2 id="oci8-1"><a href="#oci8-1" class="headerlink" title="oci8"></a>oci8</h2><h3 id="先安裝-DTRACE"><a href="#先安裝-DTRACE" class="headerlink" title="先安裝 DTRACE"></a>先安裝 DTRACE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install systemtap-sdt-devel</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div></pre></td></tr></table></figure>
-<p>最後一行加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PHP_DTRACE=yes</div></pre></td></tr></table></figure>
-<p>讀取設定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
-<h3 id="編譯安裝"><a href="#編譯安裝" class="headerlink" title="編譯安裝"></a>編譯安裝</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">tar -zxvf oci8-2.0.12.tgz</div><div class="line">cd oci8-2.0.12</div><div class="line">phpize</div><div class="line">./configure --with-oci8=shared,instantclient,/usr/lib/oracle/11.2/client/lib</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Installing shared extensions:     /usr/lib/php/modules/</div></pre></td></tr></table></figure>
-<h3 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h3><p>建立 ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.d/20-oci8.ini</div></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extension=oci8.so</div></pre></td></tr></table></figure>
-<p>存檔，查詢</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -i | grep oci8</div></pre></td></tr></table></figure>
-<h2 id="PDO-OCI-1"><a href="#PDO-OCI-1" class="headerlink" title="PDO_OCI"></a>PDO_OCI</h2><h3 id="修改-source-code"><a href="#修改-source-code" class="headerlink" title="修改 source code"></a>修改 source code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf PDO_OCI-1.0.tgz</div><div class="line">cd PDO_OCI-1.0</div></pre></td></tr></table></figure>
-<h4 id="修改-config-m4"><a href="#修改-config-m4" class="headerlink" title="修改 config.m4"></a>修改 config.m4</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi config.m4</div></pre></td></tr></table></figure>
-<p>第 10~11 行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">elif test -f $PDO_OCI_DIR/lib/libclntsh.$SHLIB_SUFFIX_NAME.10.1; then</div><div class="line">  PDO_OCI_VERSION=10.1</div></pre></td></tr></table></figure>
-<p>復制改為 11.2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">elif test -f $PDO_OCI_DIR/lib/libclntsh.$SHLIB_SUFFIX_NAME.11.2; then</div><div class="line">  PDO_OCI_VERSION=11.2</div></pre></td></tr></table></figure>
-<p>第 121~123 行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">10.2)</div><div class="line">  PHP_ADD_LIBRARY(clntsh, 1, PDO_OCI_SHARED_LIBADD)</div><div class="line">  ;;</div></pre></td></tr></table></figure>
-<p>復制改為 11.2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">11.2)</div><div class="line">  PHP_ADD_LIBRARY(clntsh, 1, PDO_OCI_SHARED_LIBADD)</div><div class="line">  ;;</div></pre></td></tr></table></figure>
-<p>存檔</p>
-<h4 id="修改-pdo-oci-c"><a href="#修改-pdo-oci-c" class="headerlink" title="修改 pdo_oci.c"></a>修改 pdo_oci.c</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi pdo_oci.c</div></pre></td></tr></table></figure>
-<p>第 34~36 行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function_entry pdo_oci_functions[] = &#123;</div><div class="line">    &#123;NULL, NULL, NULL&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>改為</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zend_function_entry pdo_oci_functions[] = &#123;</div><div class="line">    &#123;NULL, NULL, NULL&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="編譯安裝-1"><a href="#編譯安裝-1" class="headerlink" title="編譯安裝"></a>編譯安裝</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">phpize</div><div class="line">./configure --with-pdo-oci=instantclient,/usr,11.2</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Installing shared extensions:     /usr/lib/php/modules/</div></pre></td></tr></table></figure>
-<h3 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h3><p>建立 ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.d/30-pdo_oci.ini</div></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extension=pdo_oci.so</div></pre></td></tr></table></figure>
-<p>存檔，查詢</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -i | grep oci</div></pre></td></tr></table></figure>
-
-          
+<h2 id="oci8"><a href="#oci8" class="headerlink" title="oci8"></a>oci8</h2><p><a href="http://pecl.php.net/package/oci8">http://pecl.php.net/package/oci8</a></p>
+<h2 id="PDO-OCI"><a href="#PDO-OCI" class="headerlink" title="PDO_OCI"></a>PDO_OCI</h2><p><a href="https://pecl.php.net/package/pdo_oci">https://pecl.php.net/package/pdo_oci</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/CentOS/oracle_pdo_oci_in_centos_6/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
