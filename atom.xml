@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dtask.idv.tw/"/>
-  <updated>2017-02-16T15:52:05.000Z</updated>
+  <updated>2017-02-16T17:47:22.000Z</updated>
   <id>https://blog.dtask.idv.tw/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/"/>
     <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/</id>
     <published>2017-02-15T16:00:00.000Z</published>
-    <updated>2017-02-16T15:52:05.000Z</updated>
+    <updated>2017-02-16T17:47:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
 <p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
@@ -52,7 +52,7 @@
 <p>在你的 Home 目錄(或任何地方)建立一個新的資料夾，在資料夾裡新增一個 composer.json 的檔案加入你希望 Global require-dev 的套件並安裝</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"require"</span>: &#123;</div><div class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"5.7.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下來將這個資料夾下 vendor/bin 的完整路徑加入到 ~/.bash_profile 或 ~/.zshrc (有使用 oh-my-zsh)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exportPATH=/Users/duncan/.composer/vendor/bin``</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exportPATH=/Users/duncan/.composer/vendor/bin</div></pre></td></tr></table></figure>
 <p>透過這個方式，PHPUnit 就可以在任何地方所呼叫</p>
 <h3 id="使用-Composer-Global-指令"><a href="#使用-Composer-Global-指令" class="headerlink" title="使用 Composer Global 指令"></a>使用 Composer Global 指令</h3><p>前面需要手動建立資料夾、composer.json ，Composer 有提供 global 安裝的方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer global require &quot;phpunit/phpunit&quot;</div></pre></td></tr></table></figure>
