@@ -19,6 +19,7 @@
 <blockquote>
 <p>什麼是 <a href="https://getcomposer.org/" target="_blank" rel="external">Composer</a> 呢？Composer 是一個 PHP 的套件管理工具，作為 Laravel 開發人員之前，需要基本了解 Composer 是什麼以及如何使用它</p>
 </blockquote>
+<a id="more"></a>
 <p>在深入了解 Laravel 之前，讓我們從最基礎開始</p>
 <p>建立一個新的資料夾練習，在資料夾裡新增一個 composer.json 的檔案並加入以下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"require-dev"</span>: &#123;</div><div class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"5.7.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>

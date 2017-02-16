@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dtask.idv.tw/"/>
-  <updated>2017-02-16T15:46:12.000Z</updated>
+  <updated>2017-02-16T15:52:05.000Z</updated>
   <id>https://blog.dtask.idv.tw/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/"/>
     <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/</id>
     <published>2017-02-15T16:00:00.000Z</published>
-    <updated>2017-02-16T15:46:12.000Z</updated>
+    <updated>2017-02-16T15:52:05.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
 <p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
@@ -35,6 +35,7 @@
 <blockquote>
 <p>什麼是 <a href="https://getcomposer.org/" target="_blank" rel="external">Composer</a> 呢？Composer 是一個 PHP 的套件管理工具，作為 Laravel 開發人員之前，需要基本了解 Composer 是什麼以及如何使用它</p>
 </blockquote>
+<a id="more"></a>
 <p>在深入了解 Laravel 之前，讓我們從最基礎開始</p>
 <p>建立一個新的資料夾練習，在資料夾裡新增一個 composer.json 的檔案並加入以下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"require-dev"</span>: &#123;</div><div class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"5.7.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -142,7 +143,19 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot;&gt;&lt;a href=&quot;#Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot; class=&quot;headerlink&quot; title=&quot;Laravel Testing 
+      &lt;h1 id=&quot;Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot;&gt;&lt;a href=&quot;#Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot; class=&quot;headerlink&quot; title=&quot;Laravel Testing Decoded : 第二章 介紹 PHPUnit&quot;&gt;&lt;/a&gt;Laravel Testing Decoded : 第二章 介紹 PHPUnit&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://phpunit.de/&quot;&gt;PHPUnit&lt;/a&gt; 是一個單元測試框架，由 &lt;a href=&quot;https://en.wikipedia.org/wiki/Sebastian&quot;&gt;Sebastian Bergmann&lt;/a&gt; 所開發。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;安裝&quot;&gt;&lt;a href=&quot;#安裝&quot; class=&quot;headerlink&quot; title=&quot;安裝&quot;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;p&gt;有幾種方式可以安裝 PHPUnit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pear&lt;/li&gt;
+&lt;li&gt;Composer&lt;/li&gt;
+&lt;li&gt;PHAR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 composer.json 來進行安裝 PHPUnit&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;什麼是 &lt;a href=&quot;https://getcomposer.org/&quot;&gt;Composer&lt;/a&gt; 呢？Composer 是一個 PHP 的套件管理工具，作為 Laravel 開發人員之前，需要基本了解 Composer 是什麼以及如何使用它&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
