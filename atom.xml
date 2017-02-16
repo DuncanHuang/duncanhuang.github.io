@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dtask.idv.tw/"/>
-  <updated>2017-01-28T04:30:18.000Z</updated>
+  <updated>2017-02-16T15:46:12.000Z</updated>
   <id>https://blog.dtask.idv.tw/</id>
   
   <author>
@@ -14,6 +14,144 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit</title>
+    <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/"/>
+    <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/</id>
+    <published>2017-02-15T16:00:00.000Z</published>
+    <updated>2017-02-16T15:46:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
+<p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
+</blockquote>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>有幾種方式可以安裝 PHPUnit</p>
+<ul>
+<li>Pear</li>
+<li>Composer</li>
+<li>PHAR</li>
+</ul>
+<p>可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 composer.json 來進行安裝 PHPUnit</p>
+<blockquote>
+<p>什麼是 <a href="https://getcomposer.org/" target="_blank" rel="external">Composer</a> 呢？Composer 是一個 PHP 的套件管理工具，作為 Laravel 開發人員之前，需要基本了解 Composer 是什麼以及如何使用它</p>
+</blockquote>
+<p>在深入了解 Laravel 之前，讓我們從最基礎開始</p>
+<p>建立一個新的資料夾練習，在資料夾裡新增一個 composer.json 的檔案並加入以下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"require-dev"</span>: &#123;</div><div class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"5.7.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意我們並沒有加到 require 中，PHPUnit 只有在開發過程中所需要，我們不需要擔心會在正式服務器上。</p>
+<p>下一步是安裝以及任何其它依賴的套件，使用 command line</p>
+<blockquote>
+<p>假設已將 Composer 進行 global 安裝</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer install --dev</div></pre></td></tr></table></figure>
+<p>如果一切順利安裝，你可以查看 vendor/bin/phpunit 、 vendor/phpunit ，試試查詢 PHPUnit 的命令列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./vendor/bin/phpunit -h</div></pre></td></tr></table></figure>
+<p><img src="14855404248394.jpg" alt=""></p>
+<h2 id="Global-安裝"><a href="#Global-安裝" class="headerlink" title="Global 安裝"></a>Global 安裝</h2><p>在前一章節使用的方法是需要在每一個項目下透過 Composer 進行安裝 PHPUnit，你也可以將 PHPUnit 做 Global 安裝。</p>
+<p>在你的 Home 目錄(或任何地方)建立一個新的資料夾，在資料夾裡新增一個 composer.json 的檔案加入你希望 Global require-dev 的套件並安裝</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"require"</span>: &#123;</div><div class="line">        <span class="attr">"phpunit/phpunit"</span>: <span class="string">"5.7.*"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下來將這個資料夾下 vendor/bin 的完整路徑加入到 ~/.bash_profile 或 ~/.zshrc (有使用 oh-my-zsh)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exportPATH=/Users/duncan/.composer/vendor/bin``</div></pre></td></tr></table></figure>
+<p>透過這個方式，PHPUnit 就可以在任何地方所呼叫</p>
+<h3 id="使用-Composer-Global-指令"><a href="#使用-Composer-Global-指令" class="headerlink" title="使用 Composer Global 指令"></a>使用 Composer Global 指令</h3><p>前面需要手動建立資料夾、composer.json ，Composer 有提供 global 安裝的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer global require &quot;phpunit/phpunit&quot;</div></pre></td></tr></table></figure>
+<p>安裝完會在 Home 目錄下建立 .composer 的資料夾，並在 ~/.bash_profile 或 ~/.zshrc (有使用 oh-my-zsh)加入以下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:$HOME/.composer/vendor/bin</div></pre></td></tr></table></figure>
+<h1 id="Assertions-101"><a href="#Assertions-101" class="headerlink" title="Assertions 101"></a>Assertions 101</h1><p>開始來測試 “hello world”，在這章節，將介紹你第一個 PHPunit assertion，assertTrue</p>
+<p>在你的專案下建立 tests 資料夾，並在資料夾下建立一個新檔叫 PracticeTest.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PracticeTest</span> <span class="keyword">extends</span> <span class="title">PHPUnit_Framework_TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testHelloWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $greeting = <span class="string">'Hello, World.'</span>;</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($greeting === <span class="string">'Hello, World.'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>執行測試來看它是否可以正常運行</p>
+<p><img src="14855809576551.jpg" alt=""></p>
+<p>因為我們還沒配置任何設定，所以必需指定一個路徑來進行測試，PHPUnit 會在指定的路徑下尋找測試檔案。</p>
+<p>首先，請注意最後一行</p>
+<p><img src="14855813652174.jpg" alt=""></p>
+<p>這表示一個測試成功了，如果測試失敗，你會看到大寫 F</p>
+<p><img src="14855816785819.jpg" alt=""></p>
+<p>你將會時常看到測試失敗，所以要去適應它，幸運的是，這個失敗顯示被證明是非常有用的。</p>
+<p>以上我們可以看到一個 testHellowWorld 測試失敗，並且是在第八行。</p>
+<blockquote>
+<p>為什麼會有顏色？在下一章會更深入介紹 PHPUnit 的配置選項，在那之前，使用 –colors 就會有顏色顯示</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --colors tests</div></pre></td></tr></table></figure>
+<h2 id="解析一個-Test-Class-的結構"><a href="#解析一個-Test-Class-的結構" class="headerlink" title="解析一個 Test Class 的結構"></a>解析一個 Test Class 的結構</h2><p>僅管這是一個簡單的 Class，但有幾個重要並要注意的地方，以下又是一個測試程式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PracticeTest</span> <span class="keyword">extends</span> <span class="title">PHPUnit_Framework_TestCase</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testHelloWorld</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $greeting = <span class="string">'Hello, World.'</span>;</div><div class="line">        <span class="keyword">$this</span>-&gt;assertTrue($greeting === <span class="string">'Hello, World.'</span>, $greeting);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>File Naming：檔名是很重要的，注意我們要跟著 FooTest.php 的規範，雖然這是可以修改的</li>
+<li>Matching：Class 名稱要與檔名一致</li>
+<li>Inheritance：Class 要繼承 PHPUnit_Framework_TestCase，這個 Class 在使用 PHPUnit 時可用，不過，很快可以發現，在 Laravel 的測試中，會是繼承 TestCase ，如果往上查，你會發現父類別確實繼承了 PHPUnit_Framework_TestCase 。</li>
+<li>Method Naming：每一個 Method 名稱應該都描述著這個測試在測什麼，並以 test 為開頭</li>
+</ul>
+<h2 id="assertTure"><a href="#assertTure" class="headerlink" title="assertTure"></a>assertTure</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$greeting = <span class="string">'Hello, World.'</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertTrue($greeting == <span class="string">'Hello, World.'</span>, $greeting);</div></pre></td></tr></table></figure>
+<p>希望你會發現 PHPUnit 的 test assertions 相當有可讀性，即使不了解具體細節，也很容易知道在做什麼，所有的 assertions 在 test class 都可使用，在這個例子，我們希望 $greeting 等於 “Hello, World.”</p>
+<p>這個 assertTure method 接受兩個參數</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;assertTrue(ACTUAL, OPTIONAL MESSAGE);</div></pre></td></tr></table></figure>
+<p>你會發現在 PHPUnit 裡，反向 methods 幾乎可以用，如果你要 assert 這個值為 false，那你可以使用 assertFalse</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;assertFalse(ACTUAL, OPTIONAL MESSAGE);</div></pre></td></tr></table></figure>
+<h2 id="assertEquals"><a href="#assertEquals" class="headerlink" title="assertEquals"></a>assertEquals</h2><p>在前面的例子中，我們唯一的目標是 assert 一個變數一直等於指定的字串，雖然 assertTrue 可以使用，但在這種情況下，它不是一個最佳可讀的方式，不要忽略測試的可讀性。</p>
+<p>這種介紹另一個更適合這個例子的 assertion：assertEquals</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$greeting = <span class="string">'Hello, World.'</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertEquals(<span class="string">'Hello, World.'</span>, $greeting);</div></pre></td></tr></table></figure>
+<p>這樣可讀性更好，與大多數的 PHPUnit assertions 一樣，assertEquals 接受三個參數</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;assertEquals(EXPECTED, ACTUAL, OPTIONAL MESSAGE);</div></pre></td></tr></table></figure>
+<p>assertNotEquals 是一個反向 assertion，並接受相同的參數</p>
+<p>如果你想證明兩個值是相等的，那麼明顯的使用 assertEquals 比 assertTrue 更好的選擇，即使兩個都可以使用。</p>
+<p><img src="14855990151903.jpg" alt=""></p>
+<h2 id="assertSame"><a href="#assertSame" class="headerlink" title="assertSame"></a>assertSame</h2><p>assertEquals 在需要更嚴格的相等比較時會失敗，例如 assert 變數等於 0？</p>
+<p>你可以嘗試：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$val = <span class="number">0</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertEquals(<span class="number">0</span>, $val);</div></pre></td></tr></table></figure>
+<p>這樣是可以通過測試，但如果讓變數為 null ，這個測試還是會通過測試</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$val = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertEquals(<span class="number">0</span>, $val);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>這這種情況下，當你需要更嚴格的比較(或有效的 ===)，那 assertSame 可以做到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$val = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertSame(<span class="number">0</span>, $val);  <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$val = <span class="number">0</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertSame(<span class="number">0</span>, $val);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="assertContains"><a href="#assertContains" class="headerlink" title="assertContains"></a>assertContains</h2><p>本書的目的不是教每個 assertion ，但重要的是覆蓋到要點，雖然 PHPUnit 提供了幾十個 assertions ，但你可能會發現，少數幾個就能滿足大多數的測試需求。</p>
+<p>假設你有一個名字列表，需要証明該陣列包含一個特定的值，assertTrue 可以處理這個任務，但最好選擇更有可讀性的選項：assertContains 。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testLaravelDevsIncludesDayle</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $names = [<span class="string">'Taylor'</span>, <span class="string">'Shawn'</span>, <span class="string">'Dayle'</span>];</div><div class="line">    <span class="keyword">$this</span>-&gt;assertContains(<span class="string">'Dayle'</span>, $names);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>assertContains 的參數值是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;assertContains(NEEDLE, HAYSTACK, OPTIONALMESSAGE);</div></pre></td></tr></table></figure>
+<p>正如你所知道的，反向 assertion 也是可用的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$names = [<span class="string">'Taylor'</span>, <span class="string">'Shawn'</span>, <span class="string">'Dayle'</span>];</div><div class="line"><span class="keyword">$this</span>-&gt;assertNotContains(<span class="string">'Troll'</span>, $names);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="assertArrayHasKey"><a href="#assertArrayHasKey" class="headerlink" title="assertArrayHasKey"></a>assertArrayHasKey</h2><p>有時你需要 assert 陣列裡的 key，而不是 value</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$family = [</div><div class="line">    <span class="string">'parents'</span> =&gt; <span class="string">'Joe'</span>,</div><div class="line">    <span class="string">'children'</span> =&gt; [<span class="string">'Timmy'</span>, <span class="string">'Suzy'</span>]</div><div class="line">];</div></pre></td></tr></table></figure>
+<p>在這個例子中，假設我們需要驗證 $family 裡有包含 “parents”，在這樣的情況下， assertContains 不是正確的選擇</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 無法 assert 陣列裡包含了 'parents'</span></div><div class="line"><span class="keyword">$this</span>-&gt;assertContains(<span class="string">'parents'</span>, $family);  <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>我們所需要 assert 指定陣列中的一個 key 值，解決方案是 assertArrayHasKey 。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testFamilyRequiresParent</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $family = [</div><div class="line">        <span class="string">'parents'</span> =&gt; <span class="string">'Joe'</span>,</div><div class="line">        <span class="string">'children'</span> =&gt; [<span class="string">'Timmy'</span>, <span class="string">'Suzy'</span>]</div><div class="line">    ];</div><div class="line">    <span class="keyword">$this</span>-&gt;assertArrayHasKey(<span class="string">'parents'</span>, $family);  <span class="comment">// true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="assertInternalType"><a href="#assertInternalType" class="headerlink" title="assertInternalType"></a>assertInternalType</h2><p>assertInternalType 用來測試變數的型態</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;assertInternalType(EXPECTED, ACTUAL, MESSAGE);</div></pre></td></tr></table></figure>
+<p>繼續上一個例子，要 assert 這個 $family 裡 parents 為字串或陣列，我們可以這樣做</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testFamilyRequiresParent</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $family = [</div><div class="line">        <span class="string">'parents'</span> =&gt; <span class="string">'Joe'</span>,</div><div class="line">        <span class="string">'children'</span> =&gt; [<span class="string">'Timmy'</span>, <span class="string">'Suzy'</span>]</div><div class="line">    ];</div><div class="line">    <span class="keyword">$this</span>-&gt;assertInternalType(<span class="string">'array'</span>, $family[<span class="string">'parents'</span>]);  <span class="comment">// false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;assertInternalType(<span class="string">'string'</span>, $family[<span class="string">'parents'</span>]);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>或是要 assert 的型態是整數</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$age = <span class="number">25</span>;</div><div class="line"><span class="keyword">$this</span>-&gt;assertInternalType(<span class="string">'integer'</span>, $age);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="assertInstanceOf"><a href="#assertInstanceOf" class="headerlink" title="assertInstanceOf"></a>assertInstanceOf</h2><p>時常你需要確保變數值是某個 Class 的 Instance(實體)，這在 PHPUnit 中透過 assertInstanceOf 很容易做到</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;assertInstanceOf(EXPECTED, ACTUAL, MESSAGE);</div></pre></td></tr></table></figure>
+<p>範例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DateFormatter</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $stamp;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(DateTime $stamp)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;stamp = $stamp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStamp</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;stamp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要確保 $stamp 是 PHP DateTime Class 的 Instance ，我們可以使用以下測試方式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testStampMustBeInstanceOfDateTime</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $date = <span class="keyword">new</span> DateFormatter(<span class="keyword">new</span> DateTime);</div><div class="line">    <span class="keyword">$this</span>-&gt;assertInstanceOf(<span class="string">'DateTime'</span>, $date-&gt;getStamp());  <span class="comment">// true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Asserting-Exceptions"><a href="#Asserting-Exceptions" class="headerlink" title="Asserting Exceptions"></a>Asserting Exceptions</h2><p>在單元測試時，重要的是測試你的程式碼中每一個可能的路徑，如果使用太多條件，會讓一個 Class 或 Method 難以測試。</p>
+<p>這樣的例子中可能會拋出一個異常，在 PHPUnit 我們使用 doc-blocks 來 assert exceptions . </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@expectedException</span> EXCEPTION_NAME</div><div class="line"> */</div></pre></td></tr></table></figure>
+<p>這個 doc-blocks 宣告 PHPUnit 應該期望拋出異常，如果沒有，那麼測試就會失敗。</p>
+<p>假設一個 Method 如果非數字值傳入應該拋出異常</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@expectedException</span> InvalidArgumentException</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testCalculatesCommission</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    $commission = <span class="keyword">new</span> Commission;</div><div class="line">    $commission-&gt;setSalePrice(<span class="string">'fifteen dollars'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>請注意，這種情況下，沒有使用 assert ，我們只是加上必要的程式碼，讓這個 Class 發生異常。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>雖然可以繼續介面每個 PHPUnit assertion ，但這是不明智的，本章涵蓋少數的 assertions 應該足夠你進行測試了，當你還需要其它功能時，再去查詢文件即可。</p>
+<p>接下來在我們開始進行 Laravel 特定的測試之前，我們應該花一些時間來更全面的設定 PHPUnit 配置來滿足我們的需求</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot;&gt;&lt;a href=&quot;#Laravel-Testing-Decoded-第二章-介紹-PHPUnit&quot; class=&quot;headerlink&quot; title=&quot;Laravel Testing 
+    
+    </summary>
+    
+    
+      <category term="Laravel" scheme="https://blog.dtask.idv.tw/tags/Laravel/"/>
+    
+      <category term="PHPUnit" scheme="https://blog.dtask.idv.tw/tags/PHPUnit/"/>
+    
+  </entry>
   
   <entry>
     <title>在 CentOS 6 安裝、設定 Oracel PDO_OCI</title>

@@ -72,7 +72,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Laravel,PHPUnit," />
 
 
 
@@ -90,12 +90,49 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="未知">
-<meta property="og:url" content="https://blog.dtask.idv.tw/index.html">
+<meta name="description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
+PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+
+安裝有幾種方式可以安裝 PHPUnit
+
+Pear
+Composer
+PHAR
+
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit">
+<meta property="og:url" content="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/index.html">
 <meta property="og:site_name" content="未知">
+<meta property="og:description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
+PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+
+安裝有幾種方式可以安裝 PHPUnit
+
+Pear
+Composer
+PHAR
+
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14855404248394.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14855809576551.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14855813652174.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14855816785819.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14855990151903.jpg">
+<meta property="og:updated_time" content="2017-02-16T15:46:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="未知">
+<meta name="twitter:title" content="Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit">
+<meta name="twitter:description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
+PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+
+安裝有幾種方式可以安裝 PHPUnit
+
+Pear
+Composer
+PHAR
+
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+<meta name="twitter:image" content="https://blog.dtask.idv.tw/14855404248394.jpg">
 
 
 
@@ -116,9 +153,9 @@
 
 
 
-  <link rel="canonical" href="https://blog.dtask.idv.tw/"/>
+  <link rel="canonical" href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/"/>
 
-  <title> 未知 </title>
+  <title> Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit | 未知 </title>
   <script type="text/javascript">
     var host = "blog.dtask.idv.tw";
     if ((host == window.location.host) && (window.location.protocol != "https:"))
@@ -153,9 +190,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,9 +290,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -277,10 +312,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/Books/Laravel_Testing_Decoded_Chapter_2/" itemprop="url">
-                  Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit
-                </a>
+                Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit
               
             
           </h1>
@@ -320,9 +352,7 @@
       
 
       
-        
-          
-            <h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
+        <h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
 <p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
 </blockquote>
 <h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>有幾種方式可以安裝 PHPUnit</p>
@@ -439,428 +469,61 @@
 <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>雖然可以繼續介面每個 PHPUnit assertion ，但這是不明智的，本章涵蓋少數的 assertions 應該足夠你進行測試了，當你還需要其它功能時，再去查詢文件即可。</p>
 <p>接下來在我們開始進行 Laravel 特定的測試之前，我們應該花一些時間來更全面的設定 PHPUnit 配置來滿足我們的需求</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/CentOS/oracle_pdo_oci_in_centos_6/" itemprop="url">
-                  在 CentOS 6 安裝、設定 Oracel PDO_OCI
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T00:00:00+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Laravel/" rel="tag">#Laravel</a>
           
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/PHPUnit/" rel="tag">#PHPUnit</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="下載檔案"><a href="#下載檔案" class="headerlink" title="下載檔案"></a>下載檔案</h1><h2 id="Oracle-Instant-Client"><a href="#Oracle-Instant-Client" class="headerlink" title="Oracle Instant Client"></a>Oracle Instant Client</h2><ul>
-<li>32bit → <a href="http://www.oracle.com/technetwork/topics/linuxsoft-082809.html">http://www.oracle.com/technetwork/topics/linuxsoft-082809.html</a></li>
-<li>64bit → <a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html">http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html</a></li>
-</ul>
-<h2 id="oci8"><a href="#oci8" class="headerlink" title="oci8"></a>oci8</h2><p><a href="http://pecl.php.net/package/oci8">http://pecl.php.net/package/oci8</a></p>
-<h2 id="PDO-OCI"><a href="#PDO-OCI" class="headerlink" title="PDO_OCI"></a>PDO_OCI</h2><p><a href="https://pecl.php.net/package/pdo_oci">https://pecl.php.net/package/pdo_oci</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/CentOS/oracle_pdo_oci_in_centos_6/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CentOS/oracle_pdo_oci_in_centos_6/" rel="next" title="在 CentOS 6 安裝、設定 Oracel PDO_OCI">
+                <i class="fa fa-chevron-left"></i> 在 CentOS 6 安裝、設定 Oracel PDO_OCI
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/Git/SourceTree-CustomActioins/" itemprop="url">
-                  SourceTree - Custom Actioins
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
-              2016-08-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>SourceTree 提供 Custom Actions 的功能<br>讓 User 可以自訂語法或寫 Shell Script 來執行<br>目前自己寫了三個 Shell Script</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/Git/SourceTree-CustomActioins/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/CentOS/observium_installation_in_centos_6/" itemprop="url">
-                  在 CentOS 6 安裝、設定 Observium
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-05-31T00:00:00+08:00" content="2016-05-31">
-              2016-05-31
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="建立-Nginx-Repo-設定檔"><a href="#建立-Nginx-Repo-設定檔" class="headerlink" title="建立 Nginx Repo 設定檔"></a>建立 Nginx Repo 設定檔</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/nginx.repo</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/mainline/centos/6/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
-<h2 id="安裝-Nginx"><a href="#安裝-Nginx" class="headerlink" title="安裝 Nginx"></a>安裝 Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install nginx -y</div><div class="line">chkconfig nginx on</div><div class="line">service nginx start</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/CentOS/observium_installation_in_centos_6/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/MySQL/mysql_master_slave_replication/" itemprop="url">
-                  MySQL(Maria) Master Slave Replication
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-01-02T00:00:00+08:00" content="2015-01-02">
-              2015-01-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="主機A-Master"><a href="#主機A-Master" class="headerlink" title="主機A (Master)"></a>主機A (Master)</h1><h2 id="Mater-my-cnf-設定"><a href="#Mater-my-cnf-設定" class="headerlink" title="Mater my.cnf 設定"></a>Mater my.cnf 設定</h2><p>在 [mysqld] 底下設定參數</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line"># 主機 1</div><div class="line">server-id=1</div><div class="line"></div><div class="line"># 要同步的Database (可多個)</div><div class="line">binlog-do-db=[DB Name]</div><div class="line"></div><div class="line"># Binary log 只保留三天</div><div class="line">expire_logs_days=3</div><div class="line"></div><div class="line"># Log</div><div class="line">relay-log=/var/lib/mysql/mysql-relay-bin</div><div class="line">relay-log-index=/var/lib/mysql/mysql-relay-bin.index</div><div class="line">log-error=/var/lib/mysql/mysql.err</div><div class="line">master-info-file=/var/lib/mysql/mysql-master.info</div><div class="line">relay-log-info-file=/var/lib/mysql/mysql-relay-log.info</div><div class="line">log-bin=/var/lib/mysql/mysql-bin</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/MySQL/mysql_master_slave_replication/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -868,6 +531,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -887,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -958,6 +634,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><span class="nav-number">1.</span> <span class="nav-text">Laravel Testing Decoded : 第二章 介紹 PHPUnit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝"><span class="nav-number">1.1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-安裝"><span class="nav-number">1.2.</span> <span class="nav-text">Global 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Composer-Global-指令"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 Composer Global 指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Assertions-101"><span class="nav-number">2.</span> <span class="nav-text">Assertions 101</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析一個-Test-Class-的結構"><span class="nav-number">2.1.</span> <span class="nav-text">解析一個 Test Class 的結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertTure"><span class="nav-number">2.2.</span> <span class="nav-text">assertTure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertEquals"><span class="nav-number">2.3.</span> <span class="nav-text">assertEquals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertSame"><span class="nav-number">2.4.</span> <span class="nav-text">assertSame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertContains"><span class="nav-number">2.5.</span> <span class="nav-text">assertContains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertArrayHasKey"><span class="nav-number">2.6.</span> <span class="nav-text">assertArrayHasKey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInternalType"><span class="nav-number">2.7.</span> <span class="nav-text">assertInternalType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInstanceOf"><span class="nav-number">2.8.</span> <span class="nav-text">assertInstanceOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asserting-Exceptions"><span class="nav-number">2.9.</span> <span class="nav-text">Asserting Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">2.10.</span> <span class="nav-text">總結</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1054,6 +741,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
