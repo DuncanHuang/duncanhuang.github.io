@@ -90,8 +90,7 @@
 
 
 
-<meta name="description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
-PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+<meta name="description" content="PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
 
 安裝有幾種方式可以安裝 PHPUnit
 
@@ -99,13 +98,14 @@ Pear
 Composer
 PHAR
 
-可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 composer.json 來進行安裝 PHPUnit
+
+什麼是 Composer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit">
 <meta property="og:url" content="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/index.html">
 <meta property="og:site_name" content="未知">
-<meta property="og:description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
-PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+<meta property="og:description" content="PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
 
 安裝有幾種方式可以安裝 PHPUnit
 
@@ -113,17 +113,18 @@ Pear
 Composer
 PHAR
 
-可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 composer.json 來進行安裝 PHPUnit
+
+什麼是 Composer">
 <meta property="og:image" content="https://blog.dtask.idv.tw/14855404248394.jpg">
 <meta property="og:image" content="https://blog.dtask.idv.tw/14855809576551.jpg">
 <meta property="og:image" content="https://blog.dtask.idv.tw/14855813652174.jpg">
 <meta property="og:image" content="https://blog.dtask.idv.tw/14855816785819.jpg">
 <meta property="og:image" content="https://blog.dtask.idv.tw/14855990151903.jpg">
-<meta property="og:updated_time" content="2017-02-16T17:47:22.000Z">
+<meta property="og:updated_time" content="2017-02-17T02:33:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit">
-<meta name="twitter:description" content="Laravel Testing Decoded : 第二章 介紹 PHPUnit
-PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
+<meta name="twitter:description" content="PHPUnit 是一個單元測試框架，由 Sebastian Bergmann 所開發。
 
 安裝有幾種方式可以安裝 PHPUnit
 
@@ -131,7 +132,9 @@ Pear
 Composer
 PHAR
 
-可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 c">
+可以自由選擇你希望的方式來安裝，不過在本書中會大量利用 Laravel 以及 Composer ，會使用最簡單的途徑，在 Laravel 透過 composer.json 來進行安裝 PHPUnit
+
+什麼是 Composer">
 <meta name="twitter:image" content="https://blog.dtask.idv.tw/14855404248394.jpg">
 
 
@@ -352,7 +355,7 @@ PHAR
       
 
       
-        <h1 id="Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><a href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit" class="headerlink" title="Laravel Testing Decoded : 第二章 介紹 PHPUnit"></a>Laravel Testing Decoded : 第二章 介紹 PHPUnit</h1><blockquote>
+        <blockquote>
 <p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
 </blockquote>
 <h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><p>有幾種方式可以安裝 PHPUnit</p>
@@ -642,7 +645,7 @@ PHAR
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Laravel-Testing-Decoded-第二章-介紹-PHPUnit"><span class="nav-number">1.</span> <span class="nav-text">Laravel Testing Decoded : 第二章 介紹 PHPUnit</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝"><span class="nav-number">1.1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-安裝"><span class="nav-number">1.2.</span> <span class="nav-text">Global 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Composer-Global-指令"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 Composer Global 指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Assertions-101"><span class="nav-number">2.</span> <span class="nav-text">Assertions 101</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析一個-Test-Class-的結構"><span class="nav-number">2.1.</span> <span class="nav-text">解析一個 Test Class 的結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertTure"><span class="nav-number">2.2.</span> <span class="nav-text">assertTure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertEquals"><span class="nav-number">2.3.</span> <span class="nav-text">assertEquals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertSame"><span class="nav-number">2.4.</span> <span class="nav-text">assertSame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertContains"><span class="nav-number">2.5.</span> <span class="nav-text">assertContains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertArrayHasKey"><span class="nav-number">2.6.</span> <span class="nav-text">assertArrayHasKey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInternalType"><span class="nav-number">2.7.</span> <span class="nav-text">assertInternalType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInstanceOf"><span class="nav-number">2.8.</span> <span class="nav-text">assertInstanceOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asserting-Exceptions"><span class="nav-number">2.9.</span> <span class="nav-text">Asserting Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">2.10.</span> <span class="nav-text">總結</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝"><span class="nav-number">1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-安裝"><span class="nav-number">2.</span> <span class="nav-text">Global 安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Composer-Global-指令"><span class="nav-number">2.1.</span> <span class="nav-text">使用 Composer Global 指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Assertions-101"><span class="nav-number"></span> <span class="nav-text">Assertions 101</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解析一個-Test-Class-的結構"><span class="nav-number">1.</span> <span class="nav-text">解析一個 Test Class 的結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertTure"><span class="nav-number">2.</span> <span class="nav-text">assertTure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertEquals"><span class="nav-number">3.</span> <span class="nav-text">assertEquals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertSame"><span class="nav-number">4.</span> <span class="nav-text">assertSame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertContains"><span class="nav-number">5.</span> <span class="nav-text">assertContains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertArrayHasKey"><span class="nav-number">6.</span> <span class="nav-text">assertArrayHasKey</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInternalType"><span class="nav-number">7.</span> <span class="nav-text">assertInternalType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assertInstanceOf"><span class="nav-number">8.</span> <span class="nav-text">assertInstanceOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Asserting-Exceptions"><span class="nav-number">9.</span> <span class="nav-text">Asserting Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#總結"><span class="nav-number">10.</span> <span class="nav-text">總結</span></a></li></ol></div>
             
           </div>
         </section>
