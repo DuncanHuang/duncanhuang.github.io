@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dtask.idv.tw/"/>
-  <updated>2017-03-18T17:08:14.000Z</updated>
+  <updated>2017-03-18T17:12:27.000Z</updated>
   <id>https://blog.dtask.idv.tw/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/"/>
     <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/</id>
     <published>2017-03-18T16:00:00.000Z</published>
-    <updated>2017-03-18T17:08:14.000Z</updated>
+    <updated>2017-03-18T17:12:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>PHPUnit 提供了大量的配置選項，其中許多都不會使用。在本章中，將介紹一些最有用的選項，並建立一個 XML 配置檔來儲存這些設定。</p>
 <h2 id="選項"><a href="#選項" class="headerlink" title="選項"></a>選項</h2><h3 id="Technicolor-彩色"><a href="#Technicolor-彩色" class="headerlink" title="Technicolor(彩色)"></a>Technicolor(彩色)</h3><p>雖然黑白也是可以，但建議你在運行測試時啟用彩色輸出，與交通號誌類似，簡單的綠色、紅色輸出可以幫助加快你的開發工作流程，我們對顏色的反應比文字快。</p>
@@ -78,7 +78,6 @@
 <p>以上設定完畢之後，PhpStorm 就會依據剛設定的目錄來監聽檔案存檔後是否有異動，有異動則會自動執行剛所設定的 phpunit</p>
 <p><img src="2017-03-19_00-29-34.gif" alt="2017-03-19_00-29-34"></p>
 <p><img src="2017-03-19_00-30-07.gif" alt="2017-03-19_00-30-07"></p>
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本章中，介紹了配置 PHPUnit 的基礎知識，理解這些不同的選擇是必要的，也不要忘記 Laravel 提供了自己的</p>
 ]]></content>
     
     <summary type="html">
