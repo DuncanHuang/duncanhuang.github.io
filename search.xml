@@ -11,6 +11,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --colors</div></pre></td></tr></table></figure>
 <p><img src="2017-03-03_00-03-52.jpg" alt="2017-03-03_00-03-52"></p>
 <p><img src="2017-03-03_00-04-07.jpg" alt="2017-03-03_00-04-07"></p>
+<a id="more"></a>
 <h3 id="Bootstrapping-引導"><a href="#Bootstrapping-引導" class="headerlink" title="Bootstrapping(引導)"></a>Bootstrapping(引導)</h3><p>有時你需要在執行測試之前要載入某些檔案，一個完美的例子在執行任何測試之前確保載入 Composer 的 autoload 腳本，雖然可以在每個 Test Class 開頭手動載入，但最好還是利過 PHPUnit 的 bootstrap 設定，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --bootstrap=&quot;vendor/autoload.php&quot;</div></pre></td></tr></table></figure>
 <h3 id="輸出格式"><a href="#輸出格式" class="headerlink" title="輸出格式"></a>輸出格式</h3><p>除了預設的測試報告，PHPUnit 還提供兩個選項 –tap 以及 –testdox 。</p>
