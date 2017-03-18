@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.dtask.idv.tw/"/>
-  <updated>2017-03-18T16:59:00.000Z</updated>
+  <updated>2017-03-18T17:04:57.000Z</updated>
   <id>https://blog.dtask.idv.tw/</id>
   
   <author>
@@ -20,21 +20,21 @@
     <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/"/>
     <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/</id>
     <published>2017-03-18T16:00:00.000Z</published>
-    <updated>2017-03-18T16:59:00.000Z</updated>
+    <updated>2017-03-18T17:04:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>PHPUnit 提供了大量的配置選項，其中許多都不會使用。在本章中，將介紹一些最有用的選項，並建立一個 XML 配置檔來儲存這些設定。</p>
 <h2 id="選項"><a href="#選項" class="headerlink" title="選項"></a>選項</h2><h3 id="Technicolor-彩色"><a href="#Technicolor-彩色" class="headerlink" title="Technicolor(彩色)"></a>Technicolor(彩色)</h3><p>雖然黑白也是可以，但建議你在運行測試時啟用彩色輸出，與交通號誌類似，簡單的綠色、紅色輸出可以幫助加快你的開發工作流程，我們對顏色的反應比文字快。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --colors</div></pre></td></tr></table></figure>
-<p><img src="2017-03-03_00-03-52.png" alt="2017-03-03_00-03-52"></p>
-<p><img src="2017-03-03_00-04-07.png" alt="2017-03-03_00-04-07"></p>
+<p><img src="2017-03-03_00-03-52.jpg" alt="2017-03-03_00-03-52"></p>
+<p><img src="2017-03-03_00-04-07.jpg" alt="2017-03-03_00-04-07"></p>
 <h3 id="Bootstrapping-引導"><a href="#Bootstrapping-引導" class="headerlink" title="Bootstrapping(引導)"></a>Bootstrapping(引導)</h3><p>有時你需要在執行測試之前要載入某些檔案，一個完美的例子在執行任何測試之前確保載入 Composer 的 autoload 腳本，雖然可以在每個 Test Class 開頭手動載入，但最好還是利過 PHPUnit 的 bootstrap 設定，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --bootstrap=&quot;vendor/autoload.php&quot;</div></pre></td></tr></table></figure>
 <h3 id="輸出格式"><a href="#輸出格式" class="headerlink" title="輸出格式"></a>輸出格式</h3><p>除了預設的測試報告，PHPUnit 還提供兩個選項 –tap 以及 –testdox 。</p>
 <p>TAP 是 Test Anything Protocol 的縮寫</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --tap tests</div></pre></td></tr></table></figure>
-<p><img src="2017-03-03_00-08-31.png" alt="2017-03-03_00-08-31"></p>
+<p><img src="2017-03-03_00-08-31.jpg" alt="2017-03-03_00-08-31"></p>
 <p>TestDox 格式以稍微不同的方式，它會讀取測試 Methods 名稱，並將依照 camelCase 名稱轉換為可讀的句子，例如 testRedirectsToHomePageOnSave 會轉換為 Redirects To Home Page On Save 。</p>
-<p><img src="2017-03-03_00-09-29.png" alt="2017-03-03_00-09-29"></p>
+<p><img src="2017-03-03_00-09-29.jpg" alt="2017-03-03_00-09-29"></p>
 <p>這有助於了解哪些測試成功的俯視圖以及提供文件，這是寫測試的一個優點：免費文件。</p>
 <h2 id="XML-配置檔"><a href="#XML-配置檔" class="headerlink" title="XML 配置檔"></a>XML 配置檔</h2><p>如果你以為每次使用 PHPUnit 都要輸入這麼多選項，那麼你錯了，並不需要這樣：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --bootstrap=&quot;vendor/autoload.php&quot; --testdox --colors tests</div></pre></td></tr></table></figure>
@@ -99,7 +99,7 @@
     <link href="https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/"/>
     <id>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/</id>
     <published>2017-02-15T16:00:00.000Z</published>
-    <updated>2017-02-17T02:33:01.000Z</updated>
+    <updated>2017-03-18T16:54:24.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://phpunit.de/" target="_blank" rel="external">PHPUnit</a> 是一個單元測試框架，由 <a href="https://en.wikipedia.org/wiki/Sebastian" target="_blank" rel="external">Sebastian Bergmann</a> 所開發。</p>
@@ -329,11 +329,11 @@
     </summary>
     
     
-      <category term="CentOS" scheme="https://blog.dtask.idv.tw/tags/CentOS/"/>
-    
       <category term="Oracle" scheme="https://blog.dtask.idv.tw/tags/Oracle/"/>
     
       <category term="PDO_OCI" scheme="https://blog.dtask.idv.tw/tags/PDO-OCI/"/>
+    
+      <category term="CentOS" scheme="https://blog.dtask.idv.tw/tags/CentOS/"/>
     
   </entry>
   
@@ -492,9 +492,9 @@
     </summary>
     
     
-      <category term="Observium" scheme="https://blog.dtask.idv.tw/tags/Observium/"/>
-    
       <category term="CentOS" scheme="https://blog.dtask.idv.tw/tags/CentOS/"/>
+    
+      <category term="Observium" scheme="https://blog.dtask.idv.tw/tags/Observium/"/>
     
   </entry>
   
