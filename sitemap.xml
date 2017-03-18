@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/</loc>
+    
+    <lastmod>2017-03-18T16:59:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_2/</loc>
     
     <lastmod>2017-02-17T02:33:01.000Z</lastmod>
