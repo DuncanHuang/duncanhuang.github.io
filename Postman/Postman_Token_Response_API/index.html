@@ -72,7 +72,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Postman,API,Token," />
 
 
 
@@ -90,12 +90,43 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="未知">
-<meta property="og:url" content="https://blog.dtask.idv.tw/archives/2017/02/index.html">
+<meta name="description" content="Copy &amp;amp; Paste在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。
+取得 Token
+
+貼上 Token
+
+Postman Runner、T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Postman 取得 Token 打另一隻 API">
+<meta property="og:url" content="https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/index.html">
 <meta property="og:site_name" content="未知">
+<meta property="og:description" content="Copy &amp;amp; Paste在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。
+取得 Token
+
+貼上 Token
+
+Postman Runner、T">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907173156296.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907173747821.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907179609839.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907183001088.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907184786027.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907187016857.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907188446243.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907193493411.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907196734060.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907201026419.jpg">
+<meta property="og:image" content="https://blog.dtask.idv.tw/14907203134241.gif">
+<meta property="og:updated_time" content="2017-03-28T17:01:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="未知">
+<meta name="twitter:title" content="使用 Postman 取得 Token 打另一隻 API">
+<meta name="twitter:description" content="Copy &amp;amp; Paste在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。
+取得 Token
+
+貼上 Token
+
+Postman Runner、T">
+<meta name="twitter:image" content="https://blog.dtask.idv.tw/14907173156296.jpg">
 
 
 
@@ -116,9 +147,9 @@
 
 
 
-  <link rel="canonical" href="https://blog.dtask.idv.tw/archives/2017/02/"/>
+  <link rel="canonical" href="https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/"/>
 
-  <title> Archive | 未知 </title>
+  <title> 使用 Postman 取得 Token 打另一隻 API | 未知 </title>
   <script type="text/javascript">
     var host = "blog.dtask.idv.tw";
     if ((host == window.location.host) && (window.location.protocol != "https:"))
@@ -153,7 +184,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,66 +285,152 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 6 posts in total. Keep on posting.
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用 Postman 取得 Token 打另一隻 API
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-29T00:00:00+08:00" content="2017-03-29">
+              2017-03-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <h2 id="Copy-amp-Paste"><a href="#Copy-amp-Paste" class="headerlink" title="Copy &amp; Paste"></a>Copy &amp; Paste</h2><p>在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。</p>
+<p>取得 Token</p>
+<p><img src="14907173156296.jpg" alt=""></p>
+<p>貼上 Token</p>
+<p><img src="14907173747821.jpg" alt=""></p>
+<h2 id="Postman-Runner、Test"><a href="#Postman-Runner、Test" class="headerlink" title="Postman Runner、Test"></a>Postman Runner、Test</h2><p>利用 Postman 提供的 Runner、Pre-request Script、Tests 三個功能搭配，可以解決手動 Copy &amp; Paste 麻煩的問題。</p>
+<h3 id="Login-API"><a href="#Login-API" class="headerlink" title="Login API"></a>Login API</h3><p>1.在 Login API 的 Tests 寫個簡單的測試，確定此 API 正常回傳 HTTP CODE 200</p>
+<p><img src="14907179609839.jpg" alt=""></p>
+<p>2.測試是否有回傳 token</p>
+<p><img src="14907183001088.jpg" alt=""></p>
+<p>3.將 token 丟給 Postman 提供的物件來儲存</p>
+<p><img src="14907184786027.jpg" alt=""></p>
+<p>到這些 Login API 要處理的動作就完成</p>
+<h3 id="User"><a href="#User" class="headerlink" title="User"></a>User</h3><p>1.帶入在 Login API Tests 所設定的變數</p>
+<p><img src="14907187016857.jpg" alt=""></p>
+<p>2.一樣寫個簡單的測試來確定 API 是可以正常的</p>
+<p><img src="14907188446243.jpg" alt=""></p>
+<h3 id="Runner"><a href="#Runner" class="headerlink" title="Runner"></a>Runner</h3><p>到此為止可以手動去 Send Login API，然後不需要自己去 Copy Token，直接再 Send User API，這樣可以吃到 token，但這樣如果遇到一次性 Token 的情況還是有點麻煩，所以可以利用 Runner 的功能。</p>
+<p>1.使用 Runner 的前題，需要把一次要跑完的 Request 放在同一個 Collection 或 Folder，並且順序要調整好，Runner 會依序執行。</p>
+<p><img src="14907193493411.jpg" alt=""></p>
+<p>2.開啟 Runner</p>
+<p><img src="14907196734060.jpg" alt=""></p>
+<p>3.選擇 Collection 或 Folder</p>
+<p><img src="14907201026419.jpg" alt=""></p>
+<p>4.執行結果</p>
+<p><img src="14907203134241.gif" alt=""></p>
+<p>如果 Login、User 兩隻 API 的 Tests 都有寫正確的話，Runner 結果如果都全部 PASS，那就表示 Token 取得正常、API 回傳值如預期。</p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Postman/" rel="tag">#Postman</a>
+          
+            <a href="/tags/API/" rel="tag">#API</a>
+          
+            <a href="/tags/Token/" rel="tag">#Token</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Books/Laravel_Testing_Decoded_Chapter_2/" rel="next" title="Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit">
+                <i class="fa fa-chevron-left"></i> Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/Books/Laravel_Testing_Decoded_Chapter_2/" itemprop="url">
-              
-                <span itemprop="name">Laravel Testing Decoded (導讀) 第二章 介紹 PHPUnit</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-16T00:00:00+08:00"
-              content="2017-02-16" >
-          02-16
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -321,6 +438,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -340,8 +461,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -411,6 +541,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-amp-Paste"><span class="nav-number">1.</span> <span class="nav-text">Copy & Paste</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postman-Runner、Test"><span class="nav-number">2.</span> <span class="nav-text">Postman Runner、Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Login-API"><span class="nav-number">2.1.</span> <span class="nav-text">Login API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User"><span class="nav-number">2.2.</span> <span class="nav-text">User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runner"><span class="nav-number">2.3.</span> <span class="nav-text">Runner</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -507,11 +648,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
