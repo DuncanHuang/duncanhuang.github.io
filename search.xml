@@ -7,6 +7,7 @@
       <title><![CDATA[使用 Postman 取得 Token 打另一隻 API]]></title>
       <url>https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/</url>
       <content type="html"><![CDATA[<h2 id="Copy-amp-Paste"><a href="#Copy-amp-Paste" class="headerlink" title="Copy &amp; Paste"></a>Copy &amp; Paste</h2><p>在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。</p>
+<a id="more"></a>
 <p>取得 Token</p>
 <p><img src="14907173156296.jpg" alt=""></p>
 <p>貼上 Token</p>
