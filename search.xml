@@ -4,6 +4,68 @@
   
     
     <entry>
+      <title><![CDATA[Laravel Testing Decoded (導讀) 第三章 PHPUnit 配置]]></title>
+      <url>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/</url>
+      <content type="html"><![CDATA[<p>PHPUnit 提供了大量的配置選項，其中許多都不會使用。在本章中，將介紹一些最有用的選項，並建立一個 XML 配置檔來儲存這些設定。</p>
+<h2 id="選項"><a href="#選項" class="headerlink" title="選項"></a>選項</h2><h3 id="Technicolor-彩色"><a href="#Technicolor-彩色" class="headerlink" title="Technicolor(彩色)"></a>Technicolor(彩色)</h3><p>雖然黑白也是可以，但建議你在運行測試時啟用彩色輸出，與交通號誌類似，簡單的綠色、紅色輸出可以幫助加快你的開發工作流程，我們對顏色的反應比文字快。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --colors</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><img src="2017-03-03_00-03-52.jpg" alt="2017-03-03_00-03-52"></p>
+<p><img src="2017-03-03_00-04-07.jpg" alt="2017-03-03_00-04-07"></p>
+<h3 id="Bootstrapping-引導"><a href="#Bootstrapping-引導" class="headerlink" title="Bootstrapping(引導)"></a>Bootstrapping(引導)</h3><p>有時你需要在執行測試之前要載入某些檔案，一個完美的例子在執行任何測試之前確保載入 Composer 的 autoload 腳本，雖然可以在每個 Test Class 開頭手動載入，但最好還是利過 PHPUnit 的 bootstrap 設定，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --bootstrap=&quot;vendor/autoload.php&quot;</div></pre></td></tr></table></figure>
+<h3 id="輸出格式"><a href="#輸出格式" class="headerlink" title="輸出格式"></a>輸出格式</h3><p>除了預設的測試報告，PHPUnit 還提供兩個選項 –tap 以及 –testdox 。</p>
+<p>TAP 是 Test Anything Protocol 的縮寫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --tap tests</div></pre></td></tr></table></figure>
+<p><img src="2017-03-03_00-08-31.jpg" alt="2017-03-03_00-08-31"></p>
+<p>TestDox 格式以稍微不同的方式，它會讀取測試 Methods 名稱，並將依照 camelCase 名稱轉換為可讀的句子，例如 testRedirectsToHomePageOnSave 會轉換為 Redirects To Home Page On Save 。</p>
+<p><img src="2017-03-03_00-09-29.jpg" alt="2017-03-03_00-09-29"></p>
+<p>這有助於了解哪些測試成功的俯視圖以及提供文件，這是寫測試的一個優點：免費文件。</p>
+<h2 id="XML-配置檔"><a href="#XML-配置檔" class="headerlink" title="XML 配置檔"></a>XML 配置檔</h2><p>如果你以為每次使用 PHPUnit 都要輸入這麼多選項，那麼你錯了，並不需要這樣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --bootstrap=&quot;vendor/autoload.php&quot; --testdox --colors tests</div></pre></td></tr></table></figure>
+<p>相反的，利用 PHPUnit 讀取配置檔的功能，讓我們回顧一下最簡單的例子，在專案的根目錄中，建立一個 phpunit.xml 的檔案並輸入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">phpunit</span> <span class="attr">colors</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">phpunit</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>使用這句，就可以不需要在執行測試時使用 –colors 這個 tag ，讓我們更加利用這個配置檔，使用一些其它的 option</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">phpunit</span> <span class="attr">bootstrap</span>=<span class="string">"vendor/autoload.php"</span></span></div><div class="line">         <span class="attr">colors</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertErrorsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertNoticesToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertWarningsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">stopOnFailure</span>=<span class="string">"true"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">phpunit</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>前兩個屬性已經是你所熟悉的，其餘看個人的選擇，我傾向將所有錯誤、通知、警告轉換為異常，此外，如果一個測試失敗，那麼我想取消剩餘的測試，有些人可能不喜歡，但如果你只關心修復第一個錯誤，那也不需要執行之後數以百計的測試。</p>
+<p>依據目前的情況，我們仍然要手動指定路徑，這樣不太好，設置自定義目錄，使用一個 <testsuites> 設定以及多個 <testsuite> 設定，例：</testsuite></testsuites></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">phpunit</span> <span class="attr">bootstrap</span>=<span class="string">"vendor/autoload.php"</span></span></div><div class="line">         <span class="attr">colors</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertErrorsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertNoticesToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertWarningsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">stopOnFailure</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">testsuites</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">testsuite</span> <span class="attr">name</span>=<span class="string">"Test Suite"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>tests<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">testsuite</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">testsuites</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">phpunit</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>當你只想測試你所有測試套件裡的某個子集，這種方式可以大大增加靈活度，增加一個專門用於整合測試的測試套件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">testsuites</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">testsuite</span> <span class="attr">name</span>=<span class="string">"Test Suite"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">directory</span>&gt;</span>tests<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">testsuite</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="tag">&lt;<span class="name">testsuite</span> <span class="attr">name</span>=<span class="string">"Integration"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">directory</span>&gt;</span>tests/integration<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">testsuite</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">testsuites</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>當你只想執行 “Integration” 這個測試套件時</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpunit --testsuite=&quot;Integration&quot;</div></pre></td></tr></table></figure>
+<p>在本書太多數章節，我們只使用一個主測試套件，但在實務上，一定要有系統的建立測試，你不會希望在存檔進行單元測試時執行了驗收測試。</p>
+<p>如果你想執行上面所列出來的所有測試，你只需要執行 phpunit 即可。</p>
+<h2 id="持續測試"><a href="#持續測試" class="headerlink" title="持續測試"></a>持續測試</h2><p>每次儲存檔案時自動執行測試是一個好的方式，像 Sublime Text 這樣的輕量級編輯器不提供這種功能，但可以安裝一些工具來完成這件事</p>
+<p>本書作者介紹是安裝 Ruby 的套件來達到儲檔自動執行測試，但我覺得過程有點麻煩，所以這邊介紹一下 PhpStorm 的 File Watchers 來達到自動執行測試</p>
+<h3 id="安裝-PHPUnit-Notifier"><a href="#安裝-PHPUnit-Notifier" class="headerlink" title="安裝 PHPUnit Notifier"></a>安裝 PHPUnit Notifier</h3><p>要自動執行測試之前，先安裝個測試通知套件，方便在自動執行測試後，可以直接通知測試結果</p>
+<p>這邊使用 <a href="https://github.com/mdarse/phpunit-notifier" target="_blank" rel="external">PHPUnit Notifier</a> 這個套件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer require --dev &quot;mdarse/phpunit-notifier&quot;</div></pre></td></tr></table></figure>
+<p>安裝完之後，在 phpunit.xml 裡加上監聽</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">phpunit</span> <span class="attr">bootstrap</span>=<span class="string">"vendor/autoload.php"</span></span></div><div class="line">         <span class="attr">colors</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertErrorsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertNoticesToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">convertWarningsToExceptions</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">stopOnFailure</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">testsuites</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">testsuite</span> <span class="attr">name</span>=<span class="string">"Test Suite"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>tests<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">testsuite</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">testsuites</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">listeners</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">listener</span> <span class="attr">class</span>=<span class="string">"PHPUnitNotifier\NotifierListener"</span>&gt;</span><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">listeners</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">phpunit</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>之後只要再這個專案底下執行測試就會跳出測試結果通知</p>
+<p><img src="2017-03-18_23-59-23-2.gif" alt="2017-03-18_23-59-23-2"></p>
+<p><img src="2017-03-19_00-46-29.gif" alt="2017-03-19_00-46-29"></p>
+<h3 id="PhpStorm-File-Watchers"><a href="#PhpStorm-File-Watchers" class="headerlink" title="PhpStorm File Watchers"></a>PhpStorm File Watchers</h3><p>已經安裝完通知套件後，再來設定 PhpStorm File Watchers 來達到存檔自動執行測試</p>
+<h4 id="開啟-Preferences-→-Tools-→-File-Watchers"><a href="#開啟-Preferences-→-Tools-→-File-Watchers" class="headerlink" title="開啟 Preferences → Tools → File Watchers"></a>開啟 Preferences → Tools → File Watchers</h4><p><img src="14898533913689.jpg" alt=""></p>
+<h4 id="Choose-Template"><a href="#Choose-Template" class="headerlink" title="Choose Template"></a>Choose Template</h4><p><img src="14898534490943.jpg" alt=""></p>
+<h4 id="New-Watcher"><a href="#New-Watcher" class="headerlink" title="New Watcher"></a>New Watcher</h4><p><img src="14898534899810.jpg" alt=""></p>
+<p>Name：自訂名稱<br>File type：選擇 PHP<br>Scope：選擇監聽範圍</p>
+<h4 id="Scopes"><a href="#Scopes" class="headerlink" title="Scopes"></a>Scopes</h4><p><img src="14898536508389.jpg" alt=""></p>
+<p><img src="14898536575200.jpg" alt=""></p>
+<p><img src="14898536623933.jpg" alt=""></p>
+<h4 id="選擇工作目錄"><a href="#選擇工作目錄" class="headerlink" title="選擇工作目錄"></a>選擇工作目錄</h4><p><img src="14898537232955.jpg" alt=""></p>
+<p>Program：這邊使用 vendor 底下的 phpunit</p>
+<p><img src="14898537766452.jpg" alt=""></p>
+<p><img src="14898537843987.jpg" alt=""></p>
+<p><img src="14898537943359.jpg" alt=""></p>
+<p>以上設定完畢之後，PhpStorm 就會依據剛設定的目錄來監聽檔案存檔後是否有異動，有異動則會自動執行剛所設定的 phpunit</p>
+<p><img src="2017-03-19_00-29-34.gif" alt="2017-03-19_00-29-34"></p>
+<p><img src="2017-03-19_00-30-07.gif" alt="2017-03-19_00-30-07"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[使用 Postman 取得 Token 打另一隻 API]]></title>
       <url>https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/</url>
       <content type="html"><![CDATA[<h2 id="Copy-amp-Paste"><a href="#Copy-amp-Paste" class="headerlink" title="Copy &amp; Paste"></a>Copy &amp; Paste</h2><p>在測試 Token Based Authentication API 時，有個麻煩的地方是 Token 是需要透過 API 取得，然後其它 API 使用，但 Token 可能會有 時效性 或 一次性，所以需要手動去取得 Token ，再 Copy Paste 到其他 API 使用，相當的麻煩。</p>
