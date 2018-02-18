@@ -224,7 +224,7 @@
     
     <entry>
       <title><![CDATA[在 CentOS 6 安裝、設定 Oracel PDO_OCI]]></title>
-      <url>https://blog.dtask.idv.tw/CentOS/oracle_pdo_oci_in_centos_6/</url>
+      <url>https://blog.dtask.idv.tw/Centos/oracle_pdo_oci_in_centos_6/</url>
       <content type="html"><![CDATA[<h1 id="下載檔案"><a href="#下載檔案" class="headerlink" title="下載檔案"></a>下載檔案</h1><h2 id="Oracle-Instant-Client"><a href="#Oracle-Instant-Client" class="headerlink" title="Oracle Instant Client"></a>Oracle Instant Client</h2><ul>
 <li>32bit → <a href="http://www.oracle.com/technetwork/topics/linuxsoft-082809.html" target="_blank" rel="external">http://www.oracle.com/technetwork/topics/linuxsoft-082809.html</a></li>
 <li>64bit → <a href="http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html" target="_blank" rel="external">http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html</a></li>
@@ -368,7 +368,7 @@
     
     <entry>
       <title><![CDATA[在 CentOS 6 安裝、設定 Observium]]></title>
-      <url>https://blog.dtask.idv.tw/CentOS/observium_installation_in_centos_6/</url>
+      <url>https://blog.dtask.idv.tw/Centos/observium_installation_in_centos_6/</url>
       <content type="html"><![CDATA[<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="建立-Nginx-Repo-設定檔"><a href="#建立-Nginx-Repo-設定檔" class="headerlink" title="建立 Nginx Repo 設定檔"></a>建立 Nginx Repo 設定檔</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/nginx.repo</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/mainline/centos/6/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure>
 <h2 id="安裝-Nginx"><a href="#安裝-Nginx" class="headerlink" title="安裝 Nginx"></a>安裝 Nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install nginx -y</div><div class="line">chkconfig nginx on</div><div class="line">service nginx start</div></pre></td></tr></table></figure>
