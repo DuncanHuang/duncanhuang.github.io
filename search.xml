@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title><![CDATA[透過 Pre-request Script 取得 Token 後呼叫 API]]></title>
+      <url>https://blog.dtask.idv.tw/Postman/Postman_PreRequestScript_Token_API/</url>
+      <content type="html"><![CDATA[<p>在 2017 年寫了一篇 「<a href="https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/">使用 Postman 取得 Token 打另一隻 API</a>」，而那篇使用的方式是透過 Runner 的方式來達到取得 Token 再來打 API，其實還是有點麻煩，因為無法直接在單一一個 Collection 下 Send 就好。</p>
+<p>而這邊來說一下如何直接在單一一個 Collection 下 Send 來取得 Token 並且呼叫 API 。</p>
+<h2 id="Pre-request-Script"><a href="#Pre-request-Script" class="headerlink" title="Pre-request Script"></a>Pre-request Script</h2><p>在 Postman 裡，每個 Collection 都有自己的 Pre-request Script ，而這個 Script 執行的時間點顧名思義就是在此 Collection Send 之前會先處理的 Script ，因此現在主要想要先取得 Token 後再做 Send ，所以就要把取得 Token 的動作放在 Pre-request Script 來處理了。</p>
+<h3 id="Token-API"><a href="#Token-API" class="headerlink" title="Token API"></a>Token API</h3><blockquote>
+<p>首先要先確認 Token API 的呼叫方式以及回傳格式。</p>
+</blockquote>
+<p>此範列以 form-data 方式 呼叫 signin ，並傳送 user、password ，回傳 JSON 資料，且有 token 的參數。</p>
+<p><img src="15225992317313.jpg" alt=""></p>
+<h3 id="建立取得會員資料-API"><a href="#建立取得會員資料-API" class="headerlink" title="建立取得會員資料 API"></a>建立取得會員資料 API</h3><blockquote>
+<p>此 API 將取得會員資料，但必需要先有 Token 才能取得，會判斷 Token 是否有效並回傳該會員資料。</p>
+</blockquote>
+<p>我們可以先手動將 Token Copy 到 Headers 的 Authorization ，並且送出確認 API 是可以正常</p>
+<p><img src="15225998552260.jpg" alt=""></p>
+<h3 id="取得-Token-Script"><a href="#取得-Token-Script" class="headerlink" title="取得 Token Script"></a>取得 Token Script</h3><blockquote>
+<p>Postman 提供了 sendRequest 這個方法，讓我們可以在利用這個方法來先呼叫 Token API 來取得 Token 。</p>
+</blockquote>
+<p>開始在 Pre-request Script 撰寫 Script 來自動取得 Token 並讓 Authorization 自動取讀。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// ======== 取得 Token =======</div><div class="line">pm.sendRequest(&#123;</div><div class="line">    url: &apos;http://laraauth.local/member/signin&apos;,</div><div class="line">    method: &apos;POST&apos;,</div><div class="line">    body: &#123;</div><div class="line">      mode: &apos;formdata&apos;,</div><div class="line">      formdata: [</div><div class="line">        &#123;key: &quot;name&quot;, value: &quot;duncan&quot;&#125;,</div><div class="line">        &#123;key: &quot;password&quot;, value: &quot;123123123&quot;&#125;,</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">&#125;,  function(err, response) &#123;</div><div class="line">  const jsonResponse = response.json();</div><div class="line">  pm.environment.set(&quot;signin_token&quot;, jsonResponse.token);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="15226009606961.jpg" alt=""></p>
+<p>sendRequest 的使用方式蠻簡單的，跟 jQuery 的 $.ajax 有點像。</p>
+<ul>
+<li>url：Token API 網址</li>
+<li>method：以 POST 的方式傳送</li>
+<li>body：傳送參數<ul>
+<li>mode：以 formdata 的格式傳送</li>
+<li>formdata：傳送參數值設定</li>
+</ul>
+</li>
+</ul>
+<p>而回傳為 JSON 格式，所以在 response 後以 .json() 的方法解析 JSON ，並將回傳的 Token 儲存到 Postman 的環境變數裡。</p>
+<h3 id="Authorization-取讀環境變數"><a href="#Authorization-取讀環境變數" class="headerlink" title="Authorization 取讀環境變數"></a>Authorization 取讀環境變數</h3><p>上面 Pre-request Script 裡已經將取得的 Token 以 signin_token 名稱儲存到環境變數裡，現在可以先設定讓 Authorization 取讀環境變數。</p>
+<p>以雙大刮號包著變數名稱，這樣在 Send 出去時 Postman 會去讀取環境變數。</p>
+<p><img src="15226024366111.jpg" alt=""></p>
+<p>這邊故意將傳送的 Token 以 signin_token 變數回傳，來表示每次有取得到新的 Token 。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>先透過 Pre-request Script 呼叫可以取得 Token 的 API ，並且將 Token 存到環境變數，然後在需要傳送 Token 的地方去設定讀取環境變數，這樣就可以達到在單一一個 Collection 裡做到達要 Token 才能呼叫的 API 了。</p>
+<p><img src="2018-04-02_01-11-33.gif" alt="2018-04-02_01-11-33"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Laravel Testing Decoded (導讀) 第三章 PHPUnit 配置]]></title>
       <url>https://blog.dtask.idv.tw/Books/Laravel_Testing_Decoded_Chapter_3/</url>
       <content type="html"><![CDATA[<p>PHPUnit 提供了大量的配置選項，其中許多都不會使用。在本章中，將介紹一些最有用的選項，並建立一個 XML 配置檔來儲存這些設定。</p>
