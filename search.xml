@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[透過 Pre-request Script 取得 Token 後呼叫 API]]></title>
+      <title><![CDATA[Postman 透過 Pre-request Script 取得 Token 後呼叫 API]]></title>
       <url>https://blog.dtask.idv.tw/Postman/Postman_PreRequestScript_Token_API/</url>
       <content type="html"><![CDATA[<p>在 2017 年寫了一篇 「<a href="https://blog.dtask.idv.tw/Postman/Postman_Token_Response_API/">使用 Postman 取得 Token 打另一隻 API</a>」，而那篇使用的方式是透過 Runner 的方式來達到取得 Token 再來打 API，其實還是有點麻煩，因為無法直接在單一一個 Collection 下 Send 就好。</p>
 <p>而這邊來說一下如何直接在單一一個 Collection 下 Send 來取得 Token 並且呼叫 API 。</p>
