@@ -321,65 +321,13 @@
 
       
         
-          
-            <p>當流量達到一定程度時，一台 Web Server 可能會不夠力，或是為了避免 Web Server 掛掉導致服務中斷，這時就需要 Load Balancer 。</p>
+          <p>當流量達到一定程度時，一台 Web Server 可能會不夠力，或是為了避免 Web Server 掛掉導致服務中斷，這時就需要 Load Balancer 。</p>
 <p>而可以做到 Load Balancer 的工具也不少，但如果只是單純要做 Web 的 Load Balance 的話，用 Nginx 內建的 Load Balancer 就相當好用，而且設定上簡單。</p>
-<h2 id="實作環境"><a href="#實作環境" class="headerlink" title="實作環境"></a>實作環境</h2><ul>
-<li>Load Balancer<ul>
-<li>IP：192.168.2.200</li>
-<li>FQDN：web.dtask.idv.tw</li>
-</ul>
-</li>
-<li>Web Server 1<ul>
-<li>IP：192.168.2.201</li>
-<li>FQDN：web1.dtask.idv.tw</li>
-</ul>
-</li>
-<li>Web Server 2<ul>
-<li>IP：192.168.2.202</li>
-<li>FQDN：web2.dtask.idv.tw</li>
-</ul>
-</li>
-</ul>
-<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>既然這次是要用 Nginx 當 Load Balancer ，所以在 Load Balance 那台當然就一定是要先裝好 Nginx 囉，Web 1、Web 2 要裝 Nginx 或 Apache 都可以，這邊還是以 Nginx 當設定範例，先假設三台都裝好 Nginx 了。</p>
-<p>Nginx Load Balancer 有三種模式</p>
-<ul>
-<li>round-robin：標準(預設)輪詢方式</li>
-<li>least-connected：當連線進來時會把 Request 導向連線數較少的 Server</li>
-<li>ip-hash：依據 Client IP 來分配到不同台 Server</li>
-</ul>
-<p>以上三種模式也都可以自行設定權重(weight)，讓效能較好的 Server 吃比較更多的負載。</p>
-<h3 id="Web-Server-1-設定"><a href="#Web-Server-1-設定" class="headerlink" title="Web Server 1 設定"></a>Web Server 1 設定</h3><blockquote>
-<p>依據自行的環境設定，這邊主要是 server_name 不能是對外的那一個，因為那個需要給 Load Balancer ，但如果此 Server 只會有一個 Web Service 那也可以不設定 server_name。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/nginx/conf.d/default.conf</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name  web1.dtask.idv.tw;</div><div class="line"></div><div class="line">    access_log /var/log/nginx/web1.dtask.idv.tw.access.log main;</div><div class="line">    error_log /var/log/nginx/web1.dtask.idv.tw.error.log warn;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        root   /usr/share/nginx/html;</div><div class="line">        index  index.html index.htm;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Web-Server-2-設定"><a href="#Web-Server-2-設定" class="headerlink" title="Web Server 2 設定"></a>Web Server 2 設定</h3><blockquote>
-<p>如果 Web Server 1 一樣，依據自行的環境設定。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/nginx/conf.d/default.conf</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name  web2.dtask.idv.tw;</div><div class="line"></div><div class="line">    access_log /var/log/nginx/web1.dtask.idv.tw.access.log main;</div><div class="line">    error_log /var/log/nginx/web1.dtask.idv.tw.error.log warn;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        root   /usr/share/nginx/html;</div><div class="line">        index  index.html index.htm;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Load-Balancer-設定"><a href="#Load-Balancer-設定" class="headerlink" title="Load Balancer 設定"></a>Load Balancer 設定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/nginx/conf.d/default.conf</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">upstream myweb &#123;</div><div class="line">    server web1.dtask.idv.tw weight=3;</div><div class="line">    server web2.dtask.idv.tw weight=2;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen       443 ssl;</div><div class="line">    server_name  web.dtask.idv.tw;</div><div class="line"></div><div class="line">    access_log /var/log/nginx/web.dtask.idv.tw.access.log main;</div><div class="line">    error_log /var/log/nginx/web.dtask.idv.tw.error.log warn;</div><div class="line"></div><div class="line">    ssl_certificate web.dtask.idv.tw.crt;</div><div class="line">    ssl_certificate_key web.dtask.idv.tw.key;</div><div class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        proxy_pass http://myapp;</div><div class="line">        proxy_set_header   Host    $host;</div><div class="line">        proxy_set_header   X-Real-IP   $remote_addr;</div><div class="line">        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用 upstream 來設定要做分流的 Server Name、IP，而 weight 則是設定權重，以上面範列表示每五個 Request 裡會有三個跑去 Web 1，有兩個跑去 Web 2，使用此方式來讓效能較好的 Server 吃多一點流量。</p>
-<p>而設定檔的 server 區段則跟一般設定 Web Server 幾乎一樣，不一樣的地方則是透過 proxy pass 的方式將 Request 導過去，而導向的網址則是在 upstream 所自訂的名稱 “myapp”。</p>
-<p>這邊另外設定三個 proxy_set_header 是因為透過 Load Balancer 重導了，那對 Web 1 以及 Web 2 來說， Client IP 會是 Load Balancer 的 IP ，這樣對於需要抓 Client IP 是錯誤的，所以利用 proxy_set_header 將真正的 Client IP 設定在 Header 。</p>
-<p>以上是使用 round-robin 這個預設的方式，如果要使用另外兩個機制的話只要在 upstream 裡面加上一行設定值即可。</p>
-<blockquote>
-<p>least-connected</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream myweb &#123;</div><div class="line">    least_conn;</div><div class="line">    server web1.dtask.idv.tw weight=3;</div><div class="line">    server web2.dtask.idv.tw weight=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>ip-hash</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream myweb &#123;</div><div class="line">    least_conn;</div><div class="line">    server web1.dtask.idv.tw weight=3;</div><div class="line">    server web2.dtask.idv.tw weight=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>另外正常情況只會有 Load Balancer 那台有設定 DNS 且對外，所以同時需要在 Load Balancer 那台上設定 hosts ，這樣 Nginx 才會知道要導向哪邊，但如果做分流的 Server 只有一個 Web Service ，那也可以在 upstream 直接使用 IP 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/hosts</div></pre></td></tr></table></figure>
-<p>加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">web1.dtask.idv.tw 192.168.2.201</div><div class="line">web2.dtask.idv.tw 192.168.2.202</div></pre></td></tr></table></figure>
-<h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><p>經過以上簡單的設定後，一個 Load Balancer 機制就完成了，可以使用 ab test 來打 Load Balancer 那台，同時去 Web 1、Web 2 看 access log ，成功的話會發現兩台 Web 會一起分擔 ab 打過來的 Request 。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/Nginx/2018-07-31/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
