@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.dtask.idv.tw/Nginx/2018-07-31/</loc>
+    
+    <lastmod>2018-07-30T17:21:21.721Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.dtask.idv.tw/Git/SourceTree-CustomActioins/</loc>
+    
+    <lastmod>2018-07-30T16:01:09.249Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.dtask.idv.tw/Postman/Postman_PreRequestScript_Token_API/</loc>
     
     <lastmod>2018-04-03T05:50:40.000Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://blog.dtask.idv.tw/Centos/oracle_pdo_oci_in_centos_6/</loc>
     
     <lastmod>2017-01-28T04:30:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.dtask.idv.tw/Git/SourceTree-CustomActioins/</loc>
-    
-    <lastmod>2016-08-19T02:57:40.000Z</lastmod>
     
   </url>
   
