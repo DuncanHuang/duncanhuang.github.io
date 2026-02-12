@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>DQ7 Lucky Panel Tool</title>
     <style>
       /* Reset & Base */
@@ -133,6 +133,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        user-select: none;
       }
       .w-dq7-panel-tool .w-panel-wrap > .w-panel.is-selected {
         border-color: #ea2a3d !important;
@@ -194,6 +197,39 @@
       .w-dq7-panel-tool .w-panel-wrap > .w-panel[panel="Y"] > img {
         width: 80%;
         margin: 0 auto !important;
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        #article-body {
+          margin: 10px auto;
+          padding: 10px;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .w-dq7-panel-tool .w-mode-tab > li > input[type="radio"] + label {
+          font-size: 12px;
+          padding: 8px 0;
+        }
+        .w-dq7-panel-tool .w-panel-wrap.is-4x3 {
+          grid-template-rows: repeat(3, 80px);
+          line-height: 74px;
+        }
+        .w-dq7-panel-tool .w-panel-wrap.is-4x4 {
+          grid-template-rows: repeat(4, 70px);
+          line-height: 64px;
+        }
+        .w-dq7-panel-tool .w-panel-wrap.is-5x4 {
+          grid-template-rows: repeat(4, 60px);
+          line-height: 54px;
+        }
+        .w-dq7-panel-tool .w-panel-wrap.is-6x4 {
+          grid-template-rows: repeat(4, 55px);
+          line-height: 49px;
+        }
+        .w-dq7-panel-tool .w-panel-wrap > .w-panel {
+          font-size: 22px;
+        }
       }
       .w-dq7-panel-tool .w-panel-wrap > .w-panel:after {
         display: block;
@@ -358,5 +394,75 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- DQ7 Lucky Panel Tool (Vue 3 + Pinia bundled) -->
     <script src="dq7-lucky-panel-tool.min.js"></script>
+
+    <!-- Multi-touch support for mobile -->
+    <script>
+      (function () {
+        // Wait for Vue to render the panel DOM
+        var observer = new MutationObserver(function () {
+          var wrap = document.querySelector('.w-panel-wrap');
+          if (!wrap) return;
+          observer.disconnect();
+          attachTouchHandlers(wrap);
+        });
+        observer.observe(document.getElementById('Dq7LuckyPanelTool'), {
+          childList: true,
+          subtree: true,
+        });
+
+        function attachTouchHandlers(wrap) {
+          // Track which panels have been activated per touch sequence
+          var activatedPanels = new Set();
+
+          wrap.addEventListener(
+            'touchstart',
+            function (e) {
+              activatedPanels.clear();
+              handleTouches(e);
+            },
+            { passive: false }
+          );
+
+          wrap.addEventListener(
+            'touchmove',
+            function (e) {
+              // Prevent scrolling while interacting with panels
+              e.preventDefault();
+            },
+            { passive: false }
+          );
+
+          wrap.addEventListener(
+            'touchend',
+            function () {
+              activatedPanels.clear();
+            },
+            { passive: true }
+          );
+
+          function handleTouches(e) {
+            for (var i = 0; i < e.touches.length; i++) {
+              var touch = e.touches[i];
+              var target = document.elementFromPoint(touch.clientX, touch.clientY);
+              // Walk up to find .w-panel (the Vue component root)
+              var panel = target ? target.closest('.w-panel') : null;
+              if (panel && !activatedPanels.has(panel)) {
+                activatedPanels.add(panel);
+                // Prevent default to avoid zoom/scroll gestures
+                e.preventDefault();
+                // Dispatch click event that Vue's onClick will capture
+                panel.dispatchEvent(
+                  new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window,
+                  })
+                );
+              }
+            }
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
